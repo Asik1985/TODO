@@ -1,0 +1,61 @@
+﻿@model List<TODO.Web.Models.Task>
+
+@{
+    ViewData["Title"] = "Все задачи";
+}
+
+<h2>Все задачи    <a asp-action="Create" class="btn btn-success">Добавить задачу</a></h2>
+<hr />
+<h2>Список задач</h2>
+<hr />
+<table border="1">
+   <tr>
+      <th>Номер</th>
+      <th>Название задачи</th>
+      <th>Приоритет</th>
+      <th>Статус</th>
+      <th>Действия</th>
+   </tr>
+   <tr>
+    <td>1</td>
+    <td>item.Name</td>
+    <td>Высокий</td>
+    <td>Открыта</td>
+    <td><ul class="list-group">
+    
+    
+    @foreach (var item in Model)
+    {
+        @if (item.ParentId == 0)
+        {
+            <li class="list-group-item">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    @item.Name
+                </a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-danger float-end">
+                    Редактировать
+                </a>
+            </li>
+            @foreach (var itemInside in Model)
+            {
+                @if (item.Id == itemInside.ParentId)
+                {
+                    <li class="list-group-item">
+                        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                        <a asp-action="Details" asp-route-id="@itemInside.Id">
+                            @itemInside.Name
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@itemInside.Id" class="btn btn-danger float-end">
+                            Редактировать
+                        </a>
+                    </li>
+                }
+            }
+        }
+    }
+</ul></td>
+
+  </tr>
+ </table>
+<hr />
+

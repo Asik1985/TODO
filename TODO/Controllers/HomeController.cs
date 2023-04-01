@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using TODO.Models;
 
-namespace TODO.Controllers
+namespace TODO.Web.Controllers
 {
     public class HomeController : Controller
     {

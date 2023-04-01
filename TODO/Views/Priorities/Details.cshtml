@@ -1,0 +1,19 @@
+﻿@model TODO.Web.Models.Task
+
+@{
+    ViewData["Title"] = "Ltnfkb: " + Model.Name;
+}
+<h2>Новая задача</h2>
+<hr />
+<p>Статус: @Model.Name</p>
+<p>Приоритет: @Model.ParentId</p>
+<p>Номер: @Model.ParentId</p>
+<div>
+    <a asp-action="Open" asp-route-id="@Model?.Id" class="btn btn-success">Открыть</a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Удалить</a>
+</div>
+<div>
+    <h2>Описание задачи</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quasi dolorem in corrupti exercitationem rem reiciendis quod, repellendus debitis, quam temporibus nulla perferendis aperiam et enim ipsam adipisci veniam quisquam repudiandae numquam alias blanditiis. Repellat officia eveniet culpa voluptatum ipsum? </p>
+</div>
+
